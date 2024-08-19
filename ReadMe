@@ -1,6 +1,10 @@
 
 Goal is to take any stock and see what the news reporting on it. Good, Bad, neutral to aid in helping how to predict how the price will change today. This is the first step, the other steps will be to get more data and eventually create a trade bot
 
+
+nltk vader sentiment
+this will be the tool which will be used to read the articles
+
 ## Commands
 py -m venv env  
 
@@ -9,3 +13,12 @@ env\Scripts\activate
 py -m pip install beautifulsoup4 urllib3
 
 ## Error Handling
+
+  Resource vader_lexicon not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('vader_lexicon')
+
+in terminal type py
+opens up the >> and put those commands in

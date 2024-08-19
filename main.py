@@ -1,6 +1,9 @@
 
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import pandas as pd
+
 
 # 'news-table'
 news_tables= {}
@@ -36,4 +39,10 @@ for ticker, news in news_tables.items():
                 time = date_data[1]
                 
         parsed_data.append([ticker, date, time, title])
-        
+
+df = pd.DataFrame(parsed_data, columns=['ticker', 'date', 'time', 'title'])   
+vader = SentimentIntensityAnalyzer()
+   
+f = lambda title: vader.polarity_scores(title)['compound']
+df['compound'] = df['title'].apply(f) #make col in data frame with compound scores
+print(df.head())
